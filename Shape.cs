@@ -4,47 +4,45 @@ Design an abstract class `Shape` with an abstract method
 `CalculateArea()`. Create derived classes `Circle` and `Rectangle`
 that implement this method. Demonstrate abstraction by instantiating these classes.
 */
+/***Abstraction with Abstract Classes**/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace csharp2
+abstract class Shape
 {
-    abstract class Shape
+    // Abstract method
+    public abstract double CalculateArea();
+}
+
+class Circle : Shape
+{
+    private double radius;
+
+    public Circle(double radius)
     {
-        double Length, Breadth;
-        double Radius;
-        public void CalculateArea(double length,double breadth,double radius)
-        {
-            Length = length;
-            Breadth = breadth;
-            Radius = radius;
-
-        }
+        this.radius = radius;
     }
-    class Rectangle : Shape
+
+    // Implementing the abstract method
+    public override double CalculateArea()
     {
-        public void CalculateArea(double length, double breadth)
-        {
-            double areaRectangle = length * breadth;
-            Console.WriteLine("The area of rectangle is: " + areaRectangle);
-
-        }
-        
-
+        return Math.PI * radius * radius;
     }
-    class Circle : Shape
+}
+
+class Rectangle : Shape
+{
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width)
     {
-        public void CalculateArea(double radius)
-        {
-            double areacircle = 3.14 * radius * radius;
-            Console.WriteLine("The area of circle is:" + areacircle);
-
-
-        }
+        this.length = length;
+        this.width = width;
     }
-    
 
+    // Implementing the abstract method
+    public override double CalculateArea()
+    {
+        return length * width;
+    }
 }
